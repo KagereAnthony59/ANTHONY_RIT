@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>For Ritah — Forever & Always</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+
+  <!-- Ambient background canvas for floating petals & fairy lights -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Responsive Navigation Bar -->
+  <nav id="main-nav" class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <span class="nav-heart">❤</span>
+        <span class="nav-title">Ritah & Anthony</span>
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- Navigation Menu & Links -->
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="story.html" class="nav-link">Our Story</a></li>
+          <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li><a href="reasons.html" class="nav-link">Reasons</a></li>
+          <li><a href="open-when.html" class="nav-link">Open When</a></li>
+          <li><a href="promise.html" class="nav-link">Our Promise</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button id="sound-btn" class="sound-btn" title="Toggle romantic melody">
+            <span class="music-icon" aria-hidden="true">♪</span>
+            <span id="sound-label">Music: On</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Gate / Envelope Unlock Experience -->
+  <section id="gate" class="gate-overlay">
+    <div class="gate-card">
+      <div class="wax-seal" id="seal-trigger">
+        <span class="seal-inner">❤</span>
+        <div class="seal-glow"></div>
+      </div>
+      <p class="gate-subtitle" id="gate-small">Anthony made something from the heart for</p>
+      <h1 class="gate-title" id="gate-name">Ritah</h1>
+      <p class="gate-hint">A quiet corner of the universe made just for you</p>
+      <button id="open" class="btn-open">
+        <span>Tap to open with love</span>
+        <span class="btn-sparkle">✨</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Main Romantic Website -->
+  <main class="page-container" id="site">
+    
+    <!-- Hero Section -->
+    <header class="hero-home">
+      <div class="home-badge">Forever & Always</div>
+      <h2 class="home-title">Ritah, this is for you.</h2>
+      <p class="home-intro">
+        I wanted to give you something that lasts longer than a text message. A quiet haven where our love, memories, and dreams live. Explore our world below.
+      </p>
+    </header>
+
+    <!-- Hub Cards Grid -->
+    <div class="hub-grid">
+      <a href="about.html" class="hub-card">
+        <div class="hub-icon">💌</div>
+        <h3 class="hub-title">About Us</h3>
+        <p class="hub-desc">A personal love letter from my heart, and an intimate "Hold My Hand" heartbeat touch experience.</p>
+        <span class="hub-link-text">Read my letter & hold hands →</span>
+      </a>
+
+      <a href="story.html" class="hub-card">
+        <div class="hub-icon">📖</div>
+        <h3 class="hub-title">Our Story</h3>
+        <p class="hub-desc">From our very first conversation to today — the chapters of our journey together.</p>
+        <span class="hub-link-text">Relive our moments →</span>
+      </a>
+
+      <a href="gallery.html" class="hub-card">
+        <div class="hub-icon">📸</div>
+        <h3 class="hub-title">Gallery</h3>
+        <p class="hub-desc">Snapshots of your radiant smile, our sweetest dates, and laughter frozen in time.</p>
+        <span class="hub-link-text">View photos →</span>
+      </a>
+
+      <a href="reasons.html" class="hub-card">
+        <div class="hub-icon">💖</div>
+        <h3 class="hub-title">Reasons I Love You</h3>
+        <p class="hub-desc">Tap to unveil reasons why you are the most incredible woman in this world.</p>
+        <span class="hub-link-text">Reveal reasons →</span>
+      </a>
+
+      <a href="open-when.html" class="hub-card">
+        <div class="hub-icon">✉</div>
+        <h3 class="hub-title">Open When...</h3>
+        <p class="hub-desc">Envelopes for whenever you had a rough day, can’t sleep, or miss my touch.</p>
+        <span class="hub-link-text">Open letters →</span>
+      </a>
+
+      <a href="promise.html" class="hub-card">
+        <div class="hub-icon">💍</div>
+        <h3 class="hub-title">Our Promise</h3>
+        <p class="hub-desc">My lifelong vows to you, our couple bucket list, and ping Anthony a kiss on WhatsApp.</p>
+        <span class="hub-link-text">See our promise & whisper →</span>
+      </a>
+    </div>
+
+    <!-- Closing Section -->
+    <footer class="site-footer">
+      <div class="closing-divider">❦</div>
+      <p id="closing" class="closing-quote"></p>
+      <p id="sign" class="closing-signature"></p>
+      <p class="closing-sub">Always you. Always us.</p>
+    </footer>
+
+  </main>
+
+  <audio id="song" src="music/song.mp3" loop preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>

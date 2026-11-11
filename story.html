@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Our Story — Ritah & Anthony</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient background canvas -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <nav id="main-nav" class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <span class="nav-heart">❤</span>
+        <span class="nav-title">Ritah & Anthony</span>
+      </a>
+
+      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="story.html" class="nav-link active">Our Story</a></li>
+          <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li><a href="reasons.html" class="nav-link">Reasons</a></li>
+          <li><a href="open-when.html" class="nav-link">Open When</a></li>
+          <li><a href="promise.html" class="nav-link">Our Promise</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button id="sound-btn" class="sound-btn" title="Toggle romantic melody">
+            <span class="music-icon" aria-hidden="true">♪</span>
+            <span id="sound-label">Music: On</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <main class="page-container">
+    
+    <header class="page-header">
+      <span class="page-tag">Our Milestones</span>
+      <h1 class="page-title">Chapters of Us</h1>
+      <p class="page-subtitle">
+        The moments, quiet coincidences, and late-night laughs that led me straight to your heart.
+      </p>
+    </header>
+
+    <!-- Timeline of memories -->
+    <ol class="timeline-list" id="story-timeline"></ol>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="closing-divider">❦</div>
+      <p id="closing" class="closing-quote"></p>
+      <p id="sign" class="closing-signature"></p>
+      <p class="closing-sub">Always you. Always us.</p>
+    </footer>
+
+  </main>
+
+  <audio id="song" src="music/song.mp3" loop preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
+

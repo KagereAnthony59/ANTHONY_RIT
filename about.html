@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>About Us — Ritah & Anthony</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient background canvas -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Ambient Candlelight Vignette for Hold My Hand -->
+  <div class="candlelight-glow" id="candlelight-glow"></div>
+
+  <!-- Navigation Bar -->
+  <nav id="main-nav" class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <span class="nav-heart">❤</span>
+        <span class="nav-title">Ritah & Anthony</span>
+      </a>
+
+      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link active">About Us</a></li>
+          <li><a href="story.html" class="nav-link">Our Story</a></li>
+          <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li><a href="reasons.html" class="nav-link">Reasons</a></li>
+          <li><a href="open-when.html" class="nav-link">Open When</a></li>
+          <li><a href="promise.html" class="nav-link">Our Promise</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button id="sound-btn" class="sound-btn" title="Toggle romantic melody">
+            <span class="music-icon" aria-hidden="true">♪</span>
+            <span id="sound-label">Music: On</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <main class="page-container">
+    
+    <header class="page-header">
+      <span class="page-tag">From My Heart</span>
+      <h1 class="page-title">About Us</h1>
+      <p class="page-subtitle">
+        A love that feels easy, sincere, and enduring. Here is my heart poured into words, written solely for you.
+      </p>
+    </header>
+
+    <!-- Three pillars of what Ritah means to Anthony -->
+    <div class="about-features" id="about-features"></div>
+
+    <!-- Letter Section -->
+    <section class="letter-card">
+      <div class="letter-stamp">💌</div>
+      <p class="letter-salutation" id="letter-salutation">My Dearest Ritah,</p>
+      <div class="letter-body" id="about-letter-body"></div>
+      <div class="letter-signature" id="letter-sign">Forever yours, Anthony</div>
+    </section>
+
+    <!-- Feature 2: "Hold My Hand" Touch & Heartbeat Experience -->
+    <section class="hold-hand-card" id="hold-hand-section">
+      <div class="hold-hand-header">
+        <span class="hold-hand-tag">Close Your Eyes</span>
+        <h2 class="hold-hand-title">Hold My Hand</h2>
+        <p class="hold-hand-desc">
+          No matter how many miles lie between us, press and hold your thumb on the glowing heart below to feel my heartbeat and hold my hand.
+        </p>
+      </div>
+
+      <div class="touch-pad-wrapper">
+        <svg class="touch-progress-svg" viewBox="0 0 160 160">
+          <defs>
+            <linearGradient id="roseGoldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f5d488" />
+              <stop offset="50%" stop-color="#e6839b" />
+              <stop offset="100%" stop-color="#c85a77" />
+            </linearGradient>
+          </defs>
+          <circle class="progress-bg" cx="80" cy="80" r="70" />
+          <circle id="touch-progress-bar" class="progress-bar" cx="80" cy="80" r="70" />
+        </svg>
+
+        <button id="touch-button" class="touch-button" aria-label="Press and hold to hold hand">
+          <span class="touch-icon">❤</span>
+          <span class="touch-label">Hold Here</span>
+        </button>
+      </div>
+
+      <p class="touch-status-text" id="touch-status">Press and hold gently...</p>
+
+      <div id="hand-complete-card" class="hand-complete-card" hidden>
+        <div class="complete-heart-sparkle">✨💖✨</div>
+        <p class="complete-quote">
+          “I am holding your hand right now, Ritah. You are never alone, you are safe, and my love is wrapping around you wherever you are.”
+        </p>
+        <div class="complete-sign">— Anthony</div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="closing-divider">❦</div>
+      <p id="closing" class="closing-quote"></p>
+      <p id="sign" class="closing-signature"></p>
+      <p class="closing-sub">Always you. Always us.</p>
+    </footer>
+
+  </main>
+
+  <audio id="song" src="music/song.mp3" loop preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
