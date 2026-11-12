@@ -7,9 +7,9 @@ const C = {
   her: "Ritah",
   me: "Anthony",
 
-  gateLine: "Anthony made something with love for",
+  gateLine: "Anthony made something with love for you",
   heroTitle: "Ritah, this is for you.",
-  heroText: "I wanted to give you something that lasts longer than a simple text message. A quiet haven where our love and memories live. Welcome to our world.",
+  heroText: "I wanted to give you something that lasts longer than a simple text message. A quiet place where our love and memories live. Welcome to our world.",
 
   // Personal heartfelt love letter (About Us)
   letter: {
@@ -17,7 +17,7 @@ const C = {
     paragraphs: [
       "From the moment you came into my life, you brought a warmth I didn’t know I was missing. In a world that is always rushing, you are my favorite place of peace.",
       "I love the quiet moments just as much as our biggest laughs. I love the kindness in your eyes, the sincerity in your voice, and the way your presence alone can turn an ordinary day into something unforgettable.",
-      "This little corner of the internet belongs entirely to us. Every word here is a reminder of how deeply you are cherished, appreciated, and loved — today, tomorrow, and always."
+      "Every word here is a reminder of how deeply you are cherished, appreciated, and loved — today, tomorrow, and always."
     ],
     signature: "Forever yours, Anthony"
   },
@@ -37,19 +37,14 @@ const C = {
       text: "A simple moment that quietly changed everything. Looking back, I had no idea that day was the start of my favorite story."
     },
     {
-      when: "A Special Evening",
-      title: "Our first long conversation",
-      text: "The hours disappeared like minutes. That was the night I realized you weren't just anyone — you were someone truly rare and special."
-    },
-    {
       when: "The Little Moments",
       title: "Everyday laughter & inside jokes",
-      text: "The shared smiles, late-night talks, comforting silences, and stolen glances that made me fall deeper in love with you."
+      text: "The shared smiles, comforting silences, and quiet moments that made me fall deeper in love with you."
     },
     {
       when: "Growing Together",
       title: "Facing the world as a team",
-      text: "Learning each other’s rhythms, supporting each other’s dreams, and realizing that with you by my side, nothing is impossible."
+      text: "Learning each other’s rhythms, supporting each other’s dreams, and realizing that with you by my side, I can do better."
     },
     {
       when: "Today & Forever",
@@ -60,7 +55,7 @@ const C = {
 
   // Gallery Photos (Add your pictures to photos/ folder as 1.jpg, 2.jpg, etc.)
   photos: [
-    { src: "photos/1.jpg", caption: "Your gorgeous smile", category: "dates" },
+    { src: "photos/1.avif", caption: "Your gorgeous smile", category: "dates" },
     { src: "photos/2.jpg", caption: "One of my favorite days", category: "dates" },
     { src: "photos/3.jpg", caption: "Just you being you", category: "silly" },
     { src: "photos/4.jpg", caption: "Unforgettable memories", category: "adventures" },
@@ -297,7 +292,7 @@ if (touchBtn && touchProgressBar && touchStatus) {
         osc.start(now + delay);
         osc.stop(now + delay + 0.2);
       });
-    } catch (e) {}
+    } catch (e) { }
   }
 
   function startHold(e) {
@@ -398,7 +393,7 @@ if ($("story-timeline")) {
     const li = el("li", "timeline-item");
     const dot = el("div", "timeline-dot");
     const card = el("div", "timeline-card");
-    
+
     card.append(
       el("span", "timeline-badge", s.when),
       el("h3", "timeline-title", s.title),
@@ -422,17 +417,17 @@ if (galleryContainer) {
   function renderGallery(filter = "all") {
     galleryContainer.innerHTML = "";
     const items = filter === "all" ? C.photos : C.photos.filter(p => p.category === filter);
-    
+
     items.forEach(p => {
       const card = el("div", "polaroid-card");
       const tape = el("div", "polaroid-tape");
       const wrapper = el("div", "polaroid-img-wrapper");
       const img = new Image();
-      
+
       img.className = "polaroid-img";
       img.alt = p.caption;
       img.src = p.src;
-      
+
       img.onerror = () => {
         img.remove();
         const fallback = el("div", "polaroid-fallback");
@@ -487,7 +482,7 @@ if ($("reasons-list")) {
   C.reasons.forEach((r, idx) => {
     const btn = el("button", "reason-card");
     btn.setAttribute("aria-expanded", "false");
-    
+
     const num = el("span", "reason-num", String(idx + 1));
     const closedHint = el("span", "reason-closed", "Tap to unveil reason #" + (idx + 1));
     const text = el("span", "reason-text", r);
@@ -511,7 +506,7 @@ if ($("reasons-list")) {
       if (availableExtra.length === 0) availableExtra = [...C.extraReasons];
       const randIdx = Math.floor(Math.random() * availableExtra.length);
       const chosen = availableExtra.splice(randIdx, 1)[0];
-      
+
       const out = $("surprise-output");
       out.textContent = `“${chosen}”`;
       out.hidden = false;
@@ -527,22 +522,22 @@ if ($("reasons-list")) {
 if ($("mood-grid")) {
   C.openWhen.forEach(item => {
     const card = el("div", "mood-card");
-    
+
     const header = el("div", "mood-header");
     header.append(
       el("span", "mood-icon", item.icon),
       el("h4", "mood-title", item.title)
     );
-    
+
     const body = el("div", "mood-body", item.message);
     const prompt = el("span", "mood-prompt", "Tap to open letter ✉");
-    
+
     card.append(header, prompt, body);
     card.onclick = (e) => {
       card.classList.toggle("open");
       spawnHeartExplosion(e.clientX, e.clientY, 4);
     };
-    
+
     $("mood-grid").append(card);
   });
 }
@@ -717,13 +712,13 @@ function spawnHeartExplosion(x, y, count = 4) {
     const heart = document.createElement("span");
     heart.className = "floating-click-heart";
     heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-    
+
     const jitterX = (Math.random() - 0.5) * 60;
     const jitterY = (Math.random() - 0.5) * 40;
     heart.style.left = `${x + jitterX}px`;
     heart.style.top = `${y + jitterY}px`;
     heart.style.fontSize = `${0.9 + Math.random() * 0.9}rem`;
-    
+
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 1400);
   }
