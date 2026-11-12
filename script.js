@@ -594,23 +594,31 @@ if ($("promise-text")) {
     }
 
     function getWhatsAppUrl(phone, msg) {
-      const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       const encoded = encodeURIComponent(msg);
+      // intent:// URI opens the WhatsApp app directly on Android, fallback to wa.me
+      const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       if (isMobile) {
-        // Mobile uses the direct app send endpoint
-        return `https://api.whatsapp.com/send/?phone=${phone}&text=${encoded}&type=phone_number&app_absent=0`;
+        // On mobile: open WhatsApp app directly via intent (Android) or universal link
+        return `whatsapp://send?phone=${phone}&text=${encoded}`;
       } else {
-        // Desktop uses web.whatsapp.com directly (avoids wa.me DNS/address errors)
-        return `https://web.whatsapp.com/send?phone=${phone}&text=${encoded}`;
+        // On desktop: web.whatsapp.com (requires WA Web login — best available option)
+        return `https://web.whatsapp.com/send/?phone=${phone}&text=${encoded}`;
       }
     }
+
+    // Check if on mobile for UI hints
+    const isMobileDevice = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
     function updateWaUI() {
       const phone = getPhone();
       if (phone) {
         waLink.href = getWhatsAppUrl(phone, currentMsg);
         if (waHint) {
-          waHint.textContent = `✓ Sending to Anthony (+${phone}) — Tap to change number`;
+          if (isMobileDevice) {
+            waHint.textContent = `💚 Will open WhatsApp app → Anthony (+${phone})`;
+          } else {
+            waHint.textContent = `💻 On desktop: Opens WhatsApp Web (must be logged in) — or use "Copy Note" and paste in WhatsApp`;
+          }
         }
       } else {
         waLink.href = "#";
@@ -676,18 +684,17 @@ if ($("promise-text")) {
         navigator.clipboard.writeText(currentMsg).then(() => {
           if (waCopyFeedback) {
             waCopyFeedback.hidden = false;
-            setTimeout(() => { waCopyFeedback.hidden = true; }, 4000);
+            if (isMobileDevice) {
+              waCopyFeedback.textContent = "💚 Copied! Now open WhatsApp and paste it to Anthony 💌";
+            } else {
+              waCopyFeedback.textContent = "✅ Copied! Open WhatsApp on your phone and paste this to Anthony 💌";
+            }
+            setTimeout(() => { waCopyFeedback.hidden = true; }, 5000);
           }
           spawnHeartExplosion(window.innerWidth / 2, window.innerHeight * 0.7, 8);
-          // Also open WhatsApp directly
-          const phone = getPhone();
-          if (phone) {
-            window.open(getWhatsAppUrl(phone, currentMsg), "_blank");
-          }
         }).catch(() => {
-          // Fallback if clipboard API is restricted
-          const phone = getPhone();
-          if (phone) window.open(getWhatsAppUrl(phone, currentMsg), "_blank");
+          // Fallback: show the message text in a prompt so user can manually copy
+          prompt("Copy this message and send it to Anthony on WhatsApp:", currentMsg);
         });
       };
     }
