@@ -55,7 +55,7 @@ const C = {
 
   // Gallery Photos (Add your pictures to photos/ folder as 1.jpg, 2.jpg, etc.)
   photos: [
-    { src: "photos/1.avif", caption: "Your gorgeous smile", category: "dates" },
+    { src: "photos/1.jpg", caption: "Your gorgeous smile", category: "dates" },
     { src: "photos/2.jpg", caption: "One of my favorite days", category: "dates" },
     { src: "photos/3.jpg", caption: "Just you being you", category: "silly" },
     { src: "photos/4.jpg", caption: "Unforgettable memories", category: "adventures" },
